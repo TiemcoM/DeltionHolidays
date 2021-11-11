@@ -4,11 +4,35 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Title} from "react-native-paper";
+import { ListItem} from 'react-native-elements'
 
 function HomeScreen() {
   return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Welkom thuis!</Text>
+          const list = [
+          {
+              title: 'Appointments',
+              icon: 'av-timer'
+          },
+          {
+              title: 'Trips',
+              icon: 'flight-takeoff'
+          },
+          ]
+          <View>
+              {
+                  list.map((item, i) => (
+                      <ListItem key={i} bottomDivider>
+                          <Icon name={item.icon} />
+                          <ListItem.Content>
+                              <ListItem.Title>{item.title}</ListItem.Title>
+                          </ListItem.Content>
+                          <ListItem.Chevron />
+                      </ListItem>
+                  ))
+              }
+          </View>
       </View>
   );
 }
