@@ -25,6 +25,34 @@ function HomeScreen() {
     );
 }
 
+
+
+function CountdownScreen() {
+    return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Countdown!</Text>
+        </View>
+    );
+}
+
+function SettingsScreen() {
+    return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Settings!</Text>
+        </View>
+    );
+}
+
+function AboutUsScreen() {
+    return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Title>About us!</Title>
+        </View>
+    );
+}
+
+const Tab = createMaterialBottomTabNavigator();
+
 const vakantieList = [
     {
         title: 'Kerstvakantie',
@@ -52,32 +80,6 @@ const vakantieList = [
         endDate: '',
     },
 ]
-
-function CountdownScreen() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Countdown!</Text>
-        </View>
-    );
-}
-
-function SettingsScreen() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Settings!</Text>
-        </View>
-    );
-}
-
-function AboutUsScreen() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Title>About us!</Title>
-        </View>
-    );
-}
-
-const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
     return (
