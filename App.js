@@ -1,132 +1,66 @@
-import * as React from 'react';
-import {Text, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Title} from "react-native-paper";
-import {ListItem, Avatar} from 'react-native-elements'
-import axios from 'axios';
-
-function HomeScreen() {
-    return (
-        <View>
-
-            <Text>Overzicht van alle vakanties</Text>
-            {
-                vakantieList.map((item, i) => (
-                    <ListItem key={i} bottomDivider>
-                        <ListItem.Content>
-                            <ListItem.Title>{item.title}</ListItem.Title>
-                        </ListItem.Content>
-                        <ListItem.Chevron/>
-                    </ListItem>
-                ))
-            }
-        </View>
-    );
-}
-
-
-
-function CountdownScreen() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Countdown!</Text>
-        </View>
-    );
-}
-
-function SettingsScreen() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Settings!</Text>
-        </View>
-    );
-}
-
-function AboutUsScreen() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Title>About us!</Title>
-        </View>
-    );
-}
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import CalendarTab from "./components/pages/Calendar";
+import CountdownTab from "./components/pages/Countdown";
+import SettingsTab from "./components/pages/Settings";
+import AboutUsTab from "./components/pages/AboutUs";
+import axios from "axios";
 
 const Tab = createMaterialBottomTabNavigator();
-
-const vakantieList = [
-    {
-        title: 'Kerstvakantie',
-        startDate: '',
-        endDate: '',
-    },
-    {
-        title: 'Voorjaarsvakantie',
-        startDate: '',
-        endDate: '',
-    },
-    {
-        title: 'Meivakantie',
-        startDate: '',
-        endDate: '',
-    },
-    {
-        title: 'Zomervakantie',
-        startDate: '',
-        endDate: '',
-    },
-    {
-        title: 'Herstvakantie',
-        startDate: '',
-        endDate: '',
-    },
-]
 
 export default function App() {
     return (
         <NavigationContainer>
+            <StatusBar />
             <Tab.Navigator
-                initialRouteName="Kalender"
+                initialRouteName="Counter"
                 activeColor="#e91e63"
-                barStyle={{backgroundColor: 'tomato'}}
+                barStyle={{ backgroundColor: "white" }}
             >
                 <Tab.Screen
-                    name="Home"
-                    component={HomeScreen}
+                    name="Calender"
+                    component={CalendarTab}
                     options={{
-                        tabBarLabel: 'Home',
-                        tabBarIcon: ({color}) => (
-                            <MaterialCommunityIcons name="home" color={color} size={26}/>
+                        tabBarLabel: "Calendar",
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons
+                                name="account-child-outline"
+                                color={color}
+                                size={26}
+                            />
                         ),
                     }}
                 />
                 <Tab.Screen
-                    name="Countdown"
-                    component={CountdownScreen}
+                    name="Counter"
+                    component={CountdownTab}
                     options={{
-                        tabBarLabel: 'Countdown',
-                        tabBarIcon: ({color}) => (
-                            <MaterialCommunityIcons name="bell" color={color} size={26}/>
+                        tabBarLabel: "Countdown",
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="bell" color={color} size={26} />
                         ),
                     }}
                 />
                 <Tab.Screen
                     name="Settings"
-                    component={SettingsScreen}
+                    component={SettingsTab}
                     options={{
-                        tabBarLabel: 'Settings',
-                        tabBarIcon: ({color}) => (
-                            <MaterialCommunityIcons name="account" color={color} size={26}/>
+                        tabBarLabel: "Settings",
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="account" color={color} size={26} />
                         ),
                     }}
                 />
                 <Tab.Screen
                     name="About us"
-                    component={AboutUsScreen}
+                    component={AboutUsTab}
                     options={{
-                        tabBarLabel: 'About us',
-                        tabBarIcon: ({color}) => (
-                            <MaterialCommunityIcons name="bacteria-outline" color={color} size={26}/>
+                        tabBarLabel: "About us",
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="account" color={color} size={26} />
                         ),
                     }}
                 />
