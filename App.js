@@ -7,10 +7,51 @@ import CalendarTab from "./components/pages/Calendar";
 import CountdownTab from "./components/pages/Countdown";
 import SettingsTab from "./components/pages/Settings";
 import AboutUsTab from "./components/pages/AboutUs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Location from "expo-location";
 
 const Tab = createMaterialBottomTabNavigator();
 
+const init = async () => {
+    try {
+        const value = await AsyncStorage.getItem("Region");
+        if (value !== null) {
+        } else {
+            setRegion();
+        }
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const setRegion = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+        console.log("permission not granted");
+    }
+
+    const userLocation = await Location.getCurrentPositionAsync();
+    console.log(userLocation);
+    let region = "";
+    if (userLocation.coords.latitude >= 53) {
+        region = "noord";
+    }
+    if (userLocation.coords.latitude < 53) {
+        region = "midden";
+    }
+    if (userLocation.coords.latitude <= 52) {
+        region = "zuid";
+    }
+    try {
+        await AsyncStorage.setItem("Region", region);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+
 export default function App() {
+    init();
     return (
         <NavigationContainer>
             <StatusBar/>
