@@ -24,12 +24,12 @@ export default function AboutUsTab() {
         getHolidayData();
     }, []);
     return (
-        <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+        <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#009ddc"}}>
             <Text>Over deze app!</Text>
             <Text>Deze app is met een hoop liefde gemaakt door Tiemco Meernik, student Software Development aan het
                 Deltion College te Zwolle.
             </Text>
-            <MaterialCommunityIcons name="alert" size={26}/>
+            <MaterialCommunityIcons name="alert" color="black" size={26}/>
             {Available ? (
                     <Text>{HolidayData.notice.replace('&sup1;', "")}</Text>
                 ) :

@@ -46,7 +46,7 @@ export default function CounterTab() {
     }
 
     return (
-        <View style={{ flex: 1, justifyContent: "center" }}>
+        <View style={{ flex: 1, justifyContent: "center", backgroundColor: "#009ddc"}}>
             {Available ? (
                 <CountDown
                     until={60 * 60 * 24 * (HolidayData.daysToGo + 1)}

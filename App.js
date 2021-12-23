@@ -57,7 +57,7 @@ export default function App() {
             <StatusBar/>
             <Tab.Navigator
                 initialRouteName="Counter"
-                activeColor="#e91e63"
+                activeColor="#009ddc"
                 barStyle={{backgroundColor: "white"}}
             >
                 <Tab.Screen
